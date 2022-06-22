@@ -3,11 +3,23 @@ import { FirbaseContext } from '../../store/Context';
 import Logo from '../../olx-logo.png';
 import './Login.css';
 import {useHistory} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+
+
+
+
 function Login() {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
   const {firbase} =useContext(FirbaseContext)
   const history=useHistory()
+
+  const generateError = (err) => {
+    toast.error(err, {
+        position: 'bottom-right'
+    })
+}
+
   const handleLogin=(e)=>{
     console.log("hoi");
     e.preventDefault()
@@ -16,7 +28,7 @@ function Login() {
 
     }).catch((err)=>{
       console.log('hoi');
-      alert(err.message)
+      generateError(err.message)
     })
 
   }
@@ -54,6 +66,7 @@ function Login() {
         </form>
         <a onClick={()=>{history.push('/signup')}}>Signup</a>
       </div>
+      <ToastContainer />
     </div>
   );
 }

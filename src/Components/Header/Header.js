@@ -45,7 +45,9 @@ function Header() {
         </div>
         
         {user && <span onClick={()=>{
-          firbase.auth().signOut();
+          firbase.auth().signOut().then((res)=>{
+            console.log(res);
+          });
       history.push('/login')
         }}> Logout</span>}
 

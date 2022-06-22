@@ -8,6 +8,8 @@ import View from './Pages/ViewPost'
 import Home from './Pages/Home';
 import {AuthContext,FirbaseContext} from './store/Context';
 import Post from './store/PostContext'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const {setUser}=useContext(AuthContext)
